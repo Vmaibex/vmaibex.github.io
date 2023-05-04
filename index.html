@@ -24,12 +24,63 @@
     <div class="container" id="main">
         <div class="row">
             <h1 class="col-md-20 text-center">
-                <br></br>
-                Generation of Multi-view Style Portraits Based on 3D-aware Image Synthesis<br>
+                <br>
+                <br>
+                <b>SAGE</b>
+                : Semantic-aware Generation of Multi-view Portrait Drawings
+                <br>
+                <small>IJCAI 2023</small>
             </h1>
             <hr style="margin-top:0px">
         </div>
 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://github.com/Vmaibex" style="font-size: 16px;">Biao Ma</a>
+                        <sup>1</sup>
+                    </li>
+                    <li>    
+                        <a href="https://github.com/fei-aiart" style="font-size: 16px;">Fei Gao</a>
+                        <sup>2,3</sup>
+                    </li>
+                    <li>
+                        <a href="" style="font-size: 16px;">Chang Jiang</a>
+                        <sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="" style="font-size: 16px;">NanNan Wang</a>
+                        <sup>4</sup>
+                    </li>
+                    <li>
+                        <a href="" style="font-size: 16px;">Gang Xu</a>
+                        <sup>1</sup>
+                    </li>
+                    <br>
+                    <br>
+                    <a></a>
+                    <li>
+                        <sup>1</sup>
+                        <a href="https://www.hdu.edu.cn/main.htm">Hangzhou Dianzi University</a>
+                    </li>
+                    <li>
+                        <sup>2</sup>
+                        <a href="https://hz.xidian.edu.cn/">Hangzhou Institute of Technology, Xidian University</a>
+                    </li>
+                    <li>
+                        <sup>3</sup>
+                        <a href="https://miaohui.art/">AiSketcher Tech</a>
+                    </li>
+                    <li>
+                        <sup>4</sup>
+                        <a href="https://isn.xidian.edu.cn/">ISN State Key Laboratory, Xidian University</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        
         <div class="row">
             <div class="col-md-4 col-md-offset-4 text-center">
                 <ul class="nav nav-pills nav-justified">
@@ -53,15 +104,60 @@
 
         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
-                <a>
-                    <img src="./files/fig-pipeline.png" width="1260px">
-                </a>
                 <hr style="margin-top:20px">
+                <a>
+                    <img src="./files/seed_123456.gif" height="256px">
+                </a>
+                <a>
+                    <img src="./files/seed_123456_p.gif" height="256px">
+                </a>
+                <a>
+                    <img src="./files/seed_989787.gif" height="256px">
+                </a>
+                <a>
+                    <img src="./files/seed_989787_p.gif" height="256px">
+                </a>
+                <br>
+                <br>
+                <h2>Abstract</h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    Neural radiance fields (NeRF) based methods have shown amazing performance in synthesizing 3D-consistent photographic images, but fail to generate multi-view portrait drawings. 
+                    The key is that the basic assumption of these methods -- a surface point is consistent when rendered from different views -- doesn't hold for drawings. 
+                    In a portrait drawing, the appearance of a facial point may changes when viewed from different angles. 
+                    Besides, portrait drawings usually present little 3D information and suffer from insufficient training data. 
+                    To combat this challenge, in this paper, we propose a Semantic-Aware GEnerator (SAGE) for synthesizing multi-view portrait drawings. 
+                    Our motivation is that facial semantic labels are view-consistent and correlate with drawing techniques. 
+                    We therefore propose to collaboratively synthesize multi-view semantic maps and the corresponding portrait drawings. 
+                    To facilitate training, we design a semantic-aware domain translator, which generates portrait drawings based on features of photographic faces. 
+                    In addition, use data augmentation via synthesis to mitigate collapsed results. We apply SAGE to synthesize multi-view portrait drawings in diverse artistic styles. 
+                    Experimental results show that SAGE achieves significantly superior or highly competitive performance, compared to existing 3D-aware image synthesis methods.
+                </p>
             </div>    
         </div>
 
         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
+                <br>
+                <br>
+                <h2>Pipeline</h2>
+                <a>
+                    <img src="./files/fig-pipeline.png" width="1100px">
+                </a>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    Pipeline of our semantic-aware portrait drawing generator, SAGE. The feature projector G<sub>F</sub> generates feature maps <b>F</b>> and normalization parameters <b>w</b>, which control content and viewpoints of generated faces. 
+                    In Stage-I, we train the feature projector G<sub>F</sub>, semantic decoder G<sub>s</sub>, and image decoder G<sub>I</sub> to enable the generator producing multi-view facial photos and semantic masks. 
+                    In Stage-II, we add the portrait drawing decoder G<sub>p</sub>, and refine all decoders for synthesizing high quality portrait drawings based on features of photographic faces.
+                </p>
+            </div>    
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br>
+                <br>
+                <h2>Generation Results</h2>
                 <a>
                     <img src="./files/first.png" height="768px">
                 </a>
@@ -84,23 +180,7 @@
             </div>    
         </div>
 
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0 text-center">
-                <hr style="margin-top:20px">
-                <a>
-                    <img src="./files/seed_123456.gif" height="256px">
-                </a>
-                <a>
-                    <img src="./files/seed_123456_p.gif" height="256px">
-                </a>
-                <a>
-                    <img src="./files/seed_989787.gif" height="256px">
-                </a>
-                <a>
-                    <img src="./files/seed_989787_p.gif" height="256px">
-                </a>
-            </div>    
-        </div>
+        
 
         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
